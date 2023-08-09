@@ -21,13 +21,18 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role;
 
     public User() {
 
+    }
+
+    public User(String username, String password, Role role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -52,6 +57,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
