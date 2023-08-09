@@ -11,7 +11,7 @@ public class Flight {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NotEmpty(message = "Origin is required")
     @Column(name = "origin")
@@ -34,7 +34,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, String origin, String destination, LocalDateTime departure, LocalDateTime arrival, Status status) {
+    public Flight(Integer id, String origin, String destination, LocalDateTime departure, LocalDateTime arrival, Status status) {
         this.id = id;
         this.origin = origin;
         this.destination = destination;
@@ -43,11 +43,11 @@ public class Flight {
         this.status = status;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
