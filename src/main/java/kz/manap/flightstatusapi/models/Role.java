@@ -6,10 +6,11 @@ import javax.persistence.*;
 @Table(name = "role")
 public class Role {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "code")
     private String code;
 
     public Role() {

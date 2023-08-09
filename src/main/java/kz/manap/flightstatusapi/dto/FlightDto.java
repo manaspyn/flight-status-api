@@ -1,13 +1,14 @@
-package kz.manap.flightstatusapi.models;
+package kz.manap.flightstatusapi.dto;
+
+import kz.manap.flightstatusapi.models.Status;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "flight")
-public class Flight {
+public class FlightDto {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,21 +22,22 @@ public class Flight {
     @Column(name = "destination")
     private String destination;
 
+    @NotEmpty
     @Column(name = "departure")
-    private LocalDateTime departure;
+    private String departure;
 
+    @NotEmpty
     @Column(name = "arrival")
-    private LocalDateTime arrival;
+    private String arrival;
 
     @NotNull
     @Column(name = "status")
     private Status status;
 
-    public Flight() {
+    public FlightDto() {
     }
 
-    public Flight(Long id, String origin, String destination, LocalDateTime departure, LocalDateTime arrival, Status status) {
-        this.id = id;
+    public FlightDto(String origin, String destination, String departure, String arrival, Status status) {
         this.origin = origin;
         this.destination = destination;
         this.departure = departure;
@@ -67,19 +69,19 @@ public class Flight {
         this.destination = destination;
     }
 
-    public LocalDateTime getDeparture() {
+    public String getDeparture() {
         return departure;
     }
 
-    public void setDeparture(LocalDateTime departure) {
+    public void setDeparture(String departure) {
         this.departure = departure;
     }
 
-    public LocalDateTime getArrival() {
+    public String getArrival() {
         return arrival;
     }
 
-    public void setArrival(LocalDateTime arrival) {
+    public void setArrival(String arrival) {
         this.arrival = arrival;
     }
 

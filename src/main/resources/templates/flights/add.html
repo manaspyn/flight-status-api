@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Flight</title>
+</head>
+<body>
+<h1>Add Flight</h1>
+<form th:action="@{/flights/add-flight}" th:object="${flightDto}" method="post">
+  <label for="origin">Origin:</label>
+  <input type="text" id="origin" th:field="*{origin}"/>
+  <div th:if="${#fields.hasErrors('origin')}" th:errors="*{origin}">Origin Error</div>
+
+  <label for="destination">Destination:</label>
+  <input type="text" id="destination" th:field="*{destination}"/>
+  <div th:if="${#fields.hasErrors('destination')}" th:errors="*{destination}">Destination Error</div>
+
+  <label for="departure">Departure:</label>
+  <input type="datetime-local" id="departure" th:field="*{departure}"/>
+  <div th:if="${#fields.hasErrors('departure')}" th:errors="*{departure}">Departure Error</div>
+
+  <label for="arrival">Arrival:</label>
+  <input type="datetime-local" id="arrival" th:field="*{arrival}"/>
+  <div th:if="${#fields.hasErrors('arrival')}" th:errors="*{arrival}">Arrival Error</div>
+
+  <label for="status">Status:</label>
+  <select id="status" th:field="*{status}">
+    <option value="InTime">InTime</option>
+    <option value="Delayed">Delayed</option>
+    <option value="Cancelled">Cancelled</option>
+  </select>
+
+  <button type="submit">Add Flight</button>
+</form>
+</body>
+</html>
